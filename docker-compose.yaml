@@ -75,7 +75,7 @@ x-airflow-common:
     # for other purpose (development, test and especially production usage) build/extend Airflow image.
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
   volumes:
-    - ${AIRFLOW_PROJ_DIR:-.}/dags:${AIRFLOW_PATH}/bq-schedule-query
+    - ${AIRFLOW_PROJ_DIR:-.}/dags:${AIRFLOW_PATH}/dags
     - ${AIRFLOW_PROJ_DIR:-.}/logs:${AIRFLOW_PATH}/logs
     - ${AIRFLOW_PROJ_DIR:-.}/config:${AIRFLOW_PATH}/config
     - ${AIRFLOW_PROJ_DIR:-.}/plugins:${AIRFLOW_PATH}/plugins

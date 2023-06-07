@@ -102,8 +102,6 @@ services:
       retries: 5
       start_period: 5s
     restart: always
-    networks:
-      - airflow-network
 
   redis:
     image: redis:latest
@@ -116,8 +114,6 @@ services:
       retries: 50
       start_period: 30s
     restart: always
-    networks:
-      - airflow-network
 
   airflow-webserver:
     <<: *airflow-common
@@ -135,8 +131,6 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
-    networks:
-      - airflow-network
 
   airflow-scheduler:
     <<: *airflow-common
@@ -152,8 +146,6 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
-    networks:
-      - airflow-network
 
   airflow-worker:
     <<: *airflow-common
@@ -176,8 +168,6 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
-    networks:
-      - airflow-network
 
   airflow-triggerer:
     <<: *airflow-common
@@ -193,8 +183,6 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
-    networks:
-      - airflow-network
 
   airflow-init:
     <<: *airflow-common
@@ -308,13 +296,6 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
-  networks:
-      - airflow-network
 
 volumes:
   postgres-db-volume:
-
-networks:
-  airflow-network:
-    name: my-pre-existing-network
-    external: true

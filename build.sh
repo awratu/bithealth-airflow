@@ -1,6 +1,6 @@
 #! /bin/bash
 
-mkdir -p ./logs ./plugins ./config
+mkdir -p ./dags ./logs ./plugins ./config
 
 docker compose config
 
